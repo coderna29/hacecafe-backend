@@ -11,6 +11,7 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3001;
+app.set("trust proxy", 1);
 
 app.use(cors({ origin: ["http://localhost:5173", "https://hacecafe-frontend.vercel.app", process.env.FRONTEND_URL].filter(Boolean), methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], credentials: true }));
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use("/admin", require("./routes/admin"));
 app.use("/config", require("./routes/config"));
 app.use("/comercial", require("./routes/comercial"));
 app.use("/juegos", require("./routes/juegos"));
+app.use("/fichajes", require("./routes/fichaje"));
 
 app.get("/categorias/todas", verificarToken, async (req, res) => {
   try { res.json(await prisma.categoria.findMany({ orderBy: { ordenDisplay: "asc" } })); }

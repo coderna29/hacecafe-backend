@@ -1,0 +1,7 @@
+Agregar estas variables al archivo .env (y en el panel del servicio donde esté publicado el backend):
+
+LOCAL_LAT=-38.5714
+LOCAL_LNG=-58.7333
+# RADIO_FICHAJE_METROS=150   (opcional, por defecto 150)
+
+Las coordenadas se sacan con clic derecho sobre el local en Google Maps.
